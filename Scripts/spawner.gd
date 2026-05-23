@@ -2,14 +2,30 @@ extends Node
 class_name Spawner
 
 const GRABBABLE_ITEM = preload("uid://cnph5f86ucn03")
-@export var spawnCount : int = 30
+@export var spawnCount : int = 20
 @export var uiManager : UImanager
 
 func _ready() -> void:
+	spawnLot()
+
+func refill():
+	removeOld()
+	spawnLot()
+
+
+func spawnLot():
 	var newitem: GrabbableItem
 	for i in spawnCount - 1:
 		newitem = GRABBABLE_ITEM.instantiate()
 		add_child(newitem)
+
+func removeOld():
+	var children := get_children()
+	for child in children:
+		child.collider.disabled = true
+		child.z_index = -1000
+		child.modulate = Color.WEB_GRAY
+		child.canDelete = true
 
 func _load_random_texture(path: String) -> Texture2D:
 	var dir := DirAccess.open(path)

@@ -1,0 +1,8 @@
+[gd_resource type="ShaderMaterial" format=3 uid="uid://b4kqacs1icfy7"]
+
+[ext_resource type="Shader" uid="uid://d350u5b60unub" path="res://Shaders/Stroke.gdshader" id="1_4h5lp"]
+
+[resource]
+shader = ExtResource("1_4h5lp")
+shader_parameter/stroke_color = Color(1, 1, 0, 1)
+shader_parameter/stroke_size = 5.0

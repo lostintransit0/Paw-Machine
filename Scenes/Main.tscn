@@ -1,0 +1,222 @@
+[gd_scene format=3 uid="uid://bvussugex6ape"]
+
+[ext_resource type="Script" uid="uid://b5sjodfx8e5sl" path="res://Scripts/UImanager.gd" id="1_v1gob"]
+[ext_resource type="Script" uid="uid://m5503g4y03qj" path="res://Scripts/Player.gd" id="2_jw32o"]
+[ext_resource type="Texture2D" uid="uid://btss2ebdxejvs" path="res://OtherSprites/rope.png" id="3_50glp"]
+[ext_resource type="Texture2D" uid="uid://6jyka0evdoq0" path="res://OtherSprites/cat.webp" id="4_vy5pj"]
+[ext_resource type="Script" uid="uid://vrb4qbtfuvms" path="res://Scripts/spawner.gd" id="5_bmxlf"]
+[ext_resource type="AudioStream" uid="uid://cgwq0w4vfuix4" path="res://Kevin MacLeod_ Monkeys Spinning Monkeys.mp3" id="6_4kpch"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_glv2v"]
+radius = 8.0
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_3dxm6"]
+radius = 19.0
+height = 98.0
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_r0du0"]
+size = Vector2(50, 50)
+
+[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_uu6xs"]
+normal = Vector2(1, 0)
+
+[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_r0du0"]
+normal = Vector2(-1, 0)
+
+[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_cm0pq"]
+
+[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_fos0i"]
+normal = Vector2(0, 1)
+
+[node name="Node2D" type="Node2D" unique_id=1922702043]
+
+[node name="Camera2D" type="Camera2D" parent="." unique_id=260988419]
+
+[node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=1989963183 node_paths=PackedStringArray("player", "spawner")]
+script = ExtResource("1_v1gob")
+player = NodePath("../Player")
+spawner = NodePath("../spawner")
+
+[node name="Control" type="Control" parent="CanvasLayer" unique_id=181982701]
+custom_minimum_size = Vector2(100, 150)
+layout_mode = 3
+anchors_preset = 9
+anchor_bottom = 1.0
+grow_vertical = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/Control" unique_id=512403053]
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+grow_horizontal = 2
+
+[node name="Panel" type="Panel" parent="CanvasLayer/Control/VBoxContainer" unique_id=1304254723]
+custom_minimum_size = Vector2(0, 30)
+layout_mode = 2
+
+[node name="Score" type="RichTextLabel" parent="CanvasLayer/Control/VBoxContainer/Panel" unique_id=1738172228]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "Score: NaN"
+scroll_active = false
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Panel2" type="Panel" parent="CanvasLayer/Control/VBoxContainer" unique_id=113954278]
+custom_minimum_size = Vector2(0, 30)
+layout_mode = 2
+
+[node name="Drops" type="RichTextLabel" parent="CanvasLayer/Control/VBoxContainer/Panel2" unique_id=1935635133]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "Drops: NaN"
+scroll_active = false
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Control2" type="Control" parent="CanvasLayer" unique_id=1134603942]
+custom_minimum_size = Vector2(100, 150)
+layout_mode = 3
+anchors_preset = 11
+anchor_left = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 0
+grow_vertical = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/Control2" unique_id=1845189566]
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+grow_horizontal = 2
+
+[node name="Panel" type="Panel" parent="CanvasLayer/Control2/VBoxContainer" unique_id=2115717488]
+custom_minimum_size = Vector2(0, 100)
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="DropShop" type="Button" parent="CanvasLayer/Control2/VBoxContainer/Panel" unique_id=1263571781]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "Buy another drop (300 points)"
+autowrap_mode = 3
+
+[node name="Panel2" type="Panel" parent="CanvasLayer/Control2/VBoxContainer" unique_id=1307962455]
+custom_minimum_size = Vector2(0, 100)
+layout_mode = 2
+
+[node name="RefillMachine" type="Button" parent="CanvasLayer/Control2/VBoxContainer/Panel2" unique_id=192739627]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "Refill Machine (700 points)"
+autowrap_mode = 3
+
+[node name="Player" type="CharacterBody2D" parent="." unique_id=16912240 node_paths=PackedStringArray("uiManager", "Cat", "CatHitbox")]
+position = Vector2(0, -328)
+collision_layer = 0
+collision_mask = 2
+script = ExtResource("2_jw32o")
+uiManager = NodePath("../CanvasLayer")
+Cat = NodePath("../Cat")
+CatHitbox = NodePath("../Cat/CollisionShape2D")
+metadata/_edit_group_ = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Player" unique_id=196433702]
+shape = SubResource("CircleShape2D_glv2v")
+
+[node name="String" type="Line2D" parent="Player" unique_id=1747381243]
+texture_repeat = 2
+points = PackedVector2Array(0, 0, 0, 96)
+width = 4.0
+texture = ExtResource("3_50glp")
+texture_mode = 1
+
+[node name="RetractDelay" type="Timer" parent="Player" unique_id=74616099]
+one_shot = true
+
+[node name="Cat" type="RigidBody2D" parent="." unique_id=658107519]
+position = Vector2(-1, -224)
+mass = 0.235
+center_of_mass_mode = 1
+center_of_mass = Vector2(0, 10)
+inertia = 3.0
+contact_monitor = true
+linear_damp = 0.5
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Cat" unique_id=1866236333]
+position = Vector2(-4.299999, 35.199997)
+rotation = 1.5707964
+shape = SubResource("CapsuleShape2D_3dxm6")
+
+[node name="Icon" type="Sprite2D" parent="Cat" unique_id=963386364]
+z_index = 1
+position = Vector2(-3.7999992, 41.199997)
+scale = Vector2(0.4, 0.4)
+texture = ExtResource("4_vy5pj")
+
+[node name="PanicArea" type="Area2D" parent="Cat" unique_id=316076505]
+position = Vector2(-1.2999992, 103.2)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Cat/PanicArea" unique_id=1285370464]
+shape = SubResource("RectangleShape2D_r0du0")
+
+[node name="Boundaries" type="Node2D" parent="." unique_id=386490698]
+
+[node name="LeftBoundary" type="StaticBody2D" parent="Boundaries" unique_id=1298600763]
+position = Vector2(-256, 88)
+collision_layer = 3
+collision_mask = 3
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Boundaries/LeftBoundary" unique_id=385744221]
+shape = SubResource("WorldBoundaryShape2D_uu6xs")
+
+[node name="RightBoundary" type="StaticBody2D" parent="Boundaries" unique_id=742202568]
+position = Vector2(256, 96)
+collision_layer = 3
+collision_mask = 3
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Boundaries/RightBoundary" unique_id=15958709]
+shape = SubResource("WorldBoundaryShape2D_r0du0")
+
+[node name="BottomBoundary" type="StaticBody2D" parent="Boundaries" unique_id=2147480800]
+position = Vector2(0, 256)
+collision_layer = 3
+collision_mask = 3
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Boundaries/BottomBoundary" unique_id=147095402]
+shape = SubResource("WorldBoundaryShape2D_cm0pq")
+
+[node name="TopBoundary" type="StaticBody2D" parent="Boundaries" unique_id=1472241968]
+position = Vector2(0, -570)
+collision_layer = 3
+collision_mask = 3
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Boundaries/TopBoundary" unique_id=248462996]
+shape = SubResource("WorldBoundaryShape2D_fos0i")
+
+[node name="spawner" type="Node2D" parent="." unique_id=230497685 node_paths=PackedStringArray("uiManager")]
+position = Vector2(2, -519)
+script = ExtResource("5_bmxlf")
+uiManager = NodePath("../CanvasLayer")
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="." unique_id=202497495]
+stream = ExtResource("6_4kpch")
+volume_db = -9.904
+autoplay = true
+parameters/looping = true

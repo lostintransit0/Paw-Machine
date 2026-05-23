@@ -1,9 +1,0 @@
-[gd_scene format=3 uid="uid://cnph5f86ucn03"]
-
-[ext_resource type="Script" uid="uid://dhe3u3aarepce" path="res://Scripts/GrabbableItem.gd" id="1_h8tpr"]
-
-[node name="Trash" type="RigidBody2D" unique_id=52016919]
-script = ExtResource("1_h8tpr")
-
-[node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="." unique_id=915548544]
-rect = Rect2(-10, -10, 21, 20)

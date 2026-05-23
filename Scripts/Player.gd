@@ -204,7 +204,7 @@ func _on_collide(body: Node):
 	retractDelay.start()
 
 func _input(event: InputEvent) -> void:
-	if event.is_action_pressed("ClawDown") and not drops == 0:
+	if event.is_action_pressed("ClawDown") and not drops == 0 and currentState == STATE.IDLE:
 		currentState = STATE.GRABBING
 		drops -= 1
 		uiManager.updateBoard(drops)
