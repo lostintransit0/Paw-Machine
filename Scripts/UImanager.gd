@@ -1,9 +1,11 @@
 extends CanvasLayer
 class_name UImanager
 
+var totalScore : int = 0
 var score : int = 0
 @onready var scoreTextbox: RichTextLabel = $Control/VBoxContainer/Panel/Score
 @onready var dropsTextbox: RichTextLabel = $Control/VBoxContainer/Panel2/Drops
+@onready var totalScoreTextbox: RichTextLabel = $Control/VBoxContainer/Panel3/TotalScore
 
 @export var player: Player
 @onready var drop_shop: Button = $Control2/VBoxContainer/Panel/DropShop
@@ -16,10 +18,12 @@ func _ready() -> void:
 
 func addScore(toAdd : int):
 	score += toAdd
+	totalScore += toAdd
 	
 func updateBoard(newDrops : int):
-	scoreTextbox.text = "Score: " + str(score)
+	scoreTextbox.text = "Money: " + str(score)
 	dropsTextbox.text = "Drops: " + str(newDrops)
+	totalScoreTextbox.text = "Score: " + str(totalScore)
 
 func on_drop_shop():
 	drop_shop.release_focus()

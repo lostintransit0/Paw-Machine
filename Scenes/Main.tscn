@@ -50,6 +50,22 @@ anchors_preset = 10
 anchor_right = 1.0
 grow_horizontal = 2
 
+[node name="Panel3" type="Panel" parent="CanvasLayer/Control/VBoxContainer" unique_id=505588841]
+custom_minimum_size = Vector2(0, 30)
+layout_mode = 2
+
+[node name="TotalScore" type="RichTextLabel" parent="CanvasLayer/Control/VBoxContainer/Panel3" unique_id=834008292]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "Score: NaN"
+scroll_active = false
+horizontal_alignment = 1
+vertical_alignment = 1
+
 [node name="Panel" type="Panel" parent="CanvasLayer/Control/VBoxContainer" unique_id=1304254723]
 custom_minimum_size = Vector2(0, 30)
 layout_mode = 2
@@ -61,7 +77,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-text = "Score: NaN"
+text = "Money: NaN"
 scroll_active = false
 horizontal_alignment = 1
 vertical_alignment = 1
