@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dhbkks37o6bd8"
-path="res://.godot/imported/Dad's Lost Coin.png-802fba3f3bb3c61a91193f8f6302f7d3.ctex"
+uid="uid://j73ehjq3cmsa"
+path="res://.godot/imported/laser-pointer.png-0610be65d8fde9c6d7bd7e76e4014351.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Items/LEGENDARY/Dad's Lost Coin.png"
-dest_files=["res://.godot/imported/Dad's Lost Coin.png-802fba3f3bb3c61a91193f8f6302f7d3.ctex"]
+source_file="res://Items/LEGENDARY/laser-pointer.png"
+dest_files=["res://.godot/imported/laser-pointer.png-0610be65d8fde9c6d7bd7e76e4014351.ctex"]
 
 [params]
 

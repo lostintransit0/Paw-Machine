@@ -17,7 +17,7 @@ config/icon="res://OtherSprites/icon.svg"
 
 [display]
 
-window/size/viewport_width=800
+window/size/viewport_width=864
 window/stretch/mode="canvas_items"
 
 [input]
