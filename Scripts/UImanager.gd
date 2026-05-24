@@ -3,13 +3,13 @@ class_name UImanager
 
 var totalScore : int = 0
 var score : int = 0
-@onready var scoreTextbox: RichTextLabel = $Control/VBoxContainer/Panel/Score
-@onready var dropsTextbox: RichTextLabel = $Control/VBoxContainer/Panel2/Drops
-@onready var totalScoreTextbox: RichTextLabel = $Control/VBoxContainer/Panel3/TotalScore
+@onready var scoreTextbox: RichTextLabel = $Control/MarginContainer/VBoxContainer/Panel/Score
+@onready var dropsTextbox: RichTextLabel = $Control/MarginContainer/VBoxContainer/Panel2/Drops
+@onready var totalScoreTextbox: RichTextLabel = $Control/MarginContainer/VBoxContainer/Panel3/TotalScore
 
 @export var player: Player
-@onready var drop_shop: Button = $Control2/VBoxContainer/Panel/DropShop
-@onready var refill_machine: Button = $Control2/VBoxContainer/Panel2/RefillMachine
+@onready var drop_shop: Button = $Control2/MarginContainer/VBoxContainer/Panel/DropShop
+@onready var refill_machine: Button = $Control2/MarginContainer/VBoxContainer/Panel2/RefillMachine
 @export var spawner: Spawner
 
 func _ready() -> void:
