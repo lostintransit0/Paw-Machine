@@ -6,6 +6,7 @@
 [ext_resource type="Texture2D" uid="uid://6jyka0evdoq0" path="res://OtherSprites/cat.webp" id="4_vy5pj"]
 [ext_resource type="Script" uid="uid://vrb4qbtfuvms" path="res://Scripts/spawner.gd" id="5_bmxlf"]
 [ext_resource type="AudioStream" uid="uid://cgwq0w4vfuix4" path="res://Kevin MacLeod_ Monkeys Spinning Monkeys.mp3" id="6_4kpch"]
+[ext_resource type="Texture2D" uid="uid://qs4hoe8673wa" path="res://OtherSprites/game-background_1.png" id="7_jw32o"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_glv2v"]
 radius = 8.0
@@ -220,3 +221,7 @@ stream = ExtResource("6_4kpch")
 volume_db = -9.904
 autoplay = true
 parameters/looping = true
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1471359117]
+z_index = -2000
+texture = ExtResource("7_jw32o")
