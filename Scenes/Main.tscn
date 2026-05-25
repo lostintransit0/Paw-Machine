@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://bvussugex6ape"]
 
 [ext_resource type="Script" uid="uid://b5sjodfx8e5sl" path="res://Scripts/UImanager.gd" id="1_v1gob"]
-[ext_resource type="Texture2D" uid="uid://col1sfq5nxnqa" path="res://OtherSprites/curtain.webp" id="2_bmxlf"]
+[ext_resource type="Texture2D" uid="uid://b8bxshsdunyap" path="res://OtherSprites/Curtain.png" id="2_bmxlf"]
 [ext_resource type="Script" uid="uid://m5503g4y03qj" path="res://Scripts/Player.gd" id="2_jw32o"]
 [ext_resource type="Texture2D" uid="uid://btss2ebdxejvs" path="res://OtherSprites/rope.png" id="3_50glp"]
 [ext_resource type="AudioStream" uid="uid://cgkaa5s02lr2p" path="res://curtain.mp3" id="3_bmxlf"]
@@ -24,7 +24,7 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0, 2),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
-"values": [Vector2(-432, 0), Vector2(0, 0)]
+"values": [Vector2(-464, 0), Vector2(0, 0)]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
@@ -63,7 +63,7 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [Vector2(-432, 0)]
+"values": [Vector2(-450, 0)]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
@@ -257,18 +257,16 @@ root_node = NodePath("../Control")
 libraries/ = SubResource("AnimationLibrary_4kpch")
 
 [node name="Curtainleft" type="TextureRect" parent="CanvasLayer" unique_id=1123934057]
-offset_left = -432.0
-offset_bottom = 648.0
+offset_left = -450.0
+offset_bottom = 670.0
 texture = ExtResource("2_bmxlf")
-expand_mode = 1
-flip_h = true
 
 [node name="Curtainright" type="TextureRect" parent="CanvasLayer" unique_id=1817944478]
 offset_left = 864.0
-offset_right = 1296.0002
-offset_bottom = 648.0
+offset_right = 1314.0015
+offset_bottom = 670.0
 texture = ExtResource("2_bmxlf")
-expand_mode = 1
+flip_h = true
 
 [node name="curtain" type="AudioStreamPlayer" parent="CanvasLayer" unique_id=1983767004]
 stream = ExtResource("3_bmxlf")
