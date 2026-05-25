@@ -3,6 +3,7 @@
 [ext_resource type="Script" path="res://Scripts/endscreen.gd" id="1_engki"]
 [ext_resource type="Texture2D" uid="uid://b8bxshsdunyap" path="res://OtherSprites/Curtain.png" id="2_c2nge"]
 [ext_resource type="Texture2D" uid="uid://cdexkoi0y1mi4" path="res://OtherSprites/game-boarder.png" id="3_c2nge"]
+[ext_resource type="Texture2D" uid="uid://hg0q0tidldcj" path="res://OtherSprites/end-screen.png" id="3_twfce"]
 
 [sub_resource type="Animation" id="Animation_ho0mf"]
 length = 0.001
@@ -98,6 +99,9 @@ flip_h = true
 libraries/ = SubResource("AnimationLibrary_c2nge")
 
 [node name="Camera2D" type="Camera2D" parent="." unique_id=1531960097]
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1755281607]
+texture = ExtResource("3_twfce")
 
 [node name="GameBoarder" type="Sprite2D" parent="." unique_id=1392889192]
 texture = ExtResource("3_c2nge")
