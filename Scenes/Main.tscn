@@ -1,13 +1,100 @@
-[gd_scene load_steps=16 format=3 uid="uid://bvussugex6ape"]
+[gd_scene format=3 uid="uid://bvussugex6ape"]
 
 [ext_resource type="Script" uid="uid://b5sjodfx8e5sl" path="res://Scripts/UImanager.gd" id="1_v1gob"]
+[ext_resource type="Texture2D" uid="uid://col1sfq5nxnqa" path="res://OtherSprites/curtain.webp" id="2_bmxlf"]
 [ext_resource type="Script" uid="uid://m5503g4y03qj" path="res://Scripts/Player.gd" id="2_jw32o"]
 [ext_resource type="Texture2D" uid="uid://btss2ebdxejvs" path="res://OtherSprites/rope.png" id="3_50glp"]
+[ext_resource type="AudioStream" uid="uid://cgkaa5s02lr2p" path="res://curtain.mp3" id="3_bmxlf"]
 [ext_resource type="Texture2D" uid="uid://6jyka0evdoq0" path="res://OtherSprites/cat.webp" id="4_vy5pj"]
 [ext_resource type="Script" uid="uid://vrb4qbtfuvms" path="res://Scripts/spawner.gd" id="5_bmxlf"]
 [ext_resource type="AudioStream" uid="uid://cgwq0w4vfuix4" path="res://Kevin MacLeod_ Monkeys Spinning Monkeys.mp3" id="6_4kpch"]
 [ext_resource type="Texture2D" uid="uid://cdexkoi0y1mi4" path="res://OtherSprites/game-boarder.png" id="7_50glp"]
 [ext_resource type="Texture2D" uid="uid://qs4hoe8673wa" path="res://OtherSprites/game-background_1.png" id="7_jw32o"]
+
+[sub_resource type="Animation" id="Animation_vy5pj"]
+resource_name = "CurtainClose"
+length = 2.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("../Curtainleft:position")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(-432, 0), Vector2(0, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("../Curtainright:position")
+tracks/1/interp = 2
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(864, 0), Vector2(432, 0)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("../../AudioStreamPlayer:volume_db")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [-9.904, -32.513]
+}
+
+[sub_resource type="Animation" id="Animation_bmxlf"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("../Curtainleft:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(-432, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("../Curtainright:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(864, 0)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("../../AudioStreamPlayer:volume_db")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [-9.904]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_4kpch"]
+_data = {
+&"CurtainClose": SubResource("Animation_vy5pj"),
+&"RESET": SubResource("Animation_bmxlf")
+}
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_glv2v"]
 radius = 8.0
@@ -30,25 +117,25 @@ normal = Vector2(-1, 0)
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_fos0i"]
 normal = Vector2(0, 1)
 
-[node name="Node2D" type="Node2D"]
+[node name="Node2D" type="Node2D" unique_id=1428441312]
 
-[node name="Camera2D" type="Camera2D" parent="."]
+[node name="Camera2D" type="Camera2D" parent="." unique_id=185049003]
 
-[node name="CanvasLayer" type="CanvasLayer" parent="." node_paths=PackedStringArray("player", "spawner")]
+[node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=1981398744 node_paths=PackedStringArray("player", "spawner")]
 script = ExtResource("1_v1gob")
 dropPriceUpFrequency = 5
 refillPriceIncrease = 200
 player = NodePath("../Player")
 spawner = NodePath("../spawner")
 
-[node name="Control" type="Control" parent="CanvasLayer"]
+[node name="Control" type="Control" parent="CanvasLayer" unique_id=1163676574]
 custom_minimum_size = Vector2(176, 150)
 layout_mode = 3
 anchors_preset = 9
 anchor_bottom = 1.0
 grow_vertical = 2
 
-[node name="MarginContainer" type="MarginContainer" parent="CanvasLayer/Control"]
+[node name="MarginContainer" type="MarginContainer" parent="CanvasLayer/Control" unique_id=351334156]
 custom_minimum_size = Vector2(176, 648)
 layout_mode = 0
 offset_right = 40.0
@@ -58,14 +145,14 @@ theme_override_constants/margin_top = 8
 theme_override_constants/margin_right = 12
 theme_override_constants/margin_bottom = 8
 
-[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/Control/MarginContainer"]
+[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/Control/MarginContainer" unique_id=1234649360]
 layout_mode = 2
 
-[node name="Panel3" type="Panel" parent="CanvasLayer/Control/MarginContainer/VBoxContainer"]
+[node name="Panel3" type="Panel" parent="CanvasLayer/Control/MarginContainer/VBoxContainer" unique_id=885476805]
 custom_minimum_size = Vector2(0, 30)
 layout_mode = 2
 
-[node name="TotalScore" type="RichTextLabel" parent="CanvasLayer/Control/MarginContainer/VBoxContainer/Panel3"]
+[node name="TotalScore" type="RichTextLabel" parent="CanvasLayer/Control/MarginContainer/VBoxContainer/Panel3" unique_id=1326372384]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -77,11 +164,11 @@ scroll_active = false
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="Panel" type="Panel" parent="CanvasLayer/Control/MarginContainer/VBoxContainer"]
+[node name="Panel" type="Panel" parent="CanvasLayer/Control/MarginContainer/VBoxContainer" unique_id=747033785]
 custom_minimum_size = Vector2(0, 30)
 layout_mode = 2
 
-[node name="Score" type="RichTextLabel" parent="CanvasLayer/Control/MarginContainer/VBoxContainer/Panel"]
+[node name="Score" type="RichTextLabel" parent="CanvasLayer/Control/MarginContainer/VBoxContainer/Panel" unique_id=211417538]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -93,11 +180,11 @@ scroll_active = false
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="Panel2" type="Panel" parent="CanvasLayer/Control/MarginContainer/VBoxContainer"]
+[node name="Panel2" type="Panel" parent="CanvasLayer/Control/MarginContainer/VBoxContainer" unique_id=1264269949]
 custom_minimum_size = Vector2(0, 30)
 layout_mode = 2
 
-[node name="Drops" type="RichTextLabel" parent="CanvasLayer/Control/MarginContainer/VBoxContainer/Panel2"]
+[node name="Drops" type="RichTextLabel" parent="CanvasLayer/Control/MarginContainer/VBoxContainer/Panel2" unique_id=1028664786]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -109,7 +196,7 @@ scroll_active = false
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="Control2" type="Control" parent="CanvasLayer"]
+[node name="Control2" type="Control" parent="CanvasLayer" unique_id=330923241]
 custom_minimum_size = Vector2(172, 150)
 layout_mode = 3
 anchors_preset = 11
@@ -119,7 +206,7 @@ anchor_bottom = 1.0
 grow_horizontal = 0
 grow_vertical = 2
 
-[node name="MarginContainer" type="MarginContainer" parent="CanvasLayer/Control2"]
+[node name="MarginContainer" type="MarginContainer" parent="CanvasLayer/Control2" unique_id=295319598]
 custom_minimum_size = Vector2(172, 150)
 layout_mode = 1
 anchors_preset = 1
@@ -133,15 +220,15 @@ theme_override_constants/margin_top = 8
 theme_override_constants/margin_right = 8
 theme_override_constants/margin_bottom = 8
 
-[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/Control2/MarginContainer"]
+[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/Control2/MarginContainer" unique_id=459138570]
 layout_mode = 2
 
-[node name="Panel" type="Panel" parent="CanvasLayer/Control2/MarginContainer/VBoxContainer"]
+[node name="Panel" type="Panel" parent="CanvasLayer/Control2/MarginContainer/VBoxContainer" unique_id=1434487558]
 custom_minimum_size = Vector2(0, 100)
 layout_mode = 2
 size_flags_vertical = 3
 
-[node name="DropShop" type="Button" parent="CanvasLayer/Control2/MarginContainer/VBoxContainer/Panel"]
+[node name="DropShop" type="Button" parent="CanvasLayer/Control2/MarginContainer/VBoxContainer/Panel" unique_id=2099331268]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -151,11 +238,11 @@ grow_vertical = 2
 text = "Buy another drop (300 points)"
 autowrap_mode = 3
 
-[node name="Panel2" type="Panel" parent="CanvasLayer/Control2/MarginContainer/VBoxContainer"]
+[node name="Panel2" type="Panel" parent="CanvasLayer/Control2/MarginContainer/VBoxContainer" unique_id=1312722597]
 custom_minimum_size = Vector2(0, 100)
 layout_mode = 2
 
-[node name="RefillMachine" type="Button" parent="CanvasLayer/Control2/MarginContainer/VBoxContainer/Panel2"]
+[node name="RefillMachine" type="Button" parent="CanvasLayer/Control2/MarginContainer/VBoxContainer/Panel2" unique_id=933263986]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -165,7 +252,29 @@ grow_vertical = 2
 text = "Refill Machine (700 points)"
 autowrap_mode = 3
 
-[node name="Player" type="CharacterBody2D" parent="." node_paths=PackedStringArray("uiManager", "Cat", "CatHitbox")]
+[node name="AnimationPlayer" type="AnimationPlayer" parent="CanvasLayer" unique_id=2122762116]
+root_node = NodePath("../Control")
+libraries/ = SubResource("AnimationLibrary_4kpch")
+
+[node name="Curtainleft" type="TextureRect" parent="CanvasLayer" unique_id=1123934057]
+offset_left = -432.0
+offset_bottom = 648.0
+texture = ExtResource("2_bmxlf")
+expand_mode = 1
+flip_h = true
+
+[node name="Curtainright" type="TextureRect" parent="CanvasLayer" unique_id=1817944478]
+offset_left = 864.0
+offset_right = 1296.0002
+offset_bottom = 648.0
+texture = ExtResource("2_bmxlf")
+expand_mode = 1
+
+[node name="curtain" type="AudioStreamPlayer" parent="CanvasLayer" unique_id=1983767004]
+stream = ExtResource("3_bmxlf")
+volume_db = -9.904
+
+[node name="Player" type="CharacterBody2D" parent="." unique_id=1735877690 node_paths=PackedStringArray("uiManager", "Cat", "CatHitbox")]
 position = Vector2(0, -328)
 collision_layer = 0
 collision_mask = 2
@@ -175,20 +284,20 @@ Cat = NodePath("../Cat")
 CatHitbox = NodePath("../Cat/CollisionShape2D")
 metadata/_edit_group_ = true
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Player"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Player" unique_id=722668046]
 shape = SubResource("CircleShape2D_glv2v")
 
-[node name="String" type="Line2D" parent="Player"]
+[node name="String" type="Line2D" parent="Player" unique_id=1886136886]
 texture_repeat = 2
 points = PackedVector2Array(0, 0, 0, 96)
 width = 8.0
 texture = ExtResource("3_50glp")
 texture_mode = 1
 
-[node name="RetractDelay" type="Timer" parent="Player"]
+[node name="RetractDelay" type="Timer" parent="Player" unique_id=1405294106]
 one_shot = true
 
-[node name="Cat" type="RigidBody2D" parent="."]
+[node name="Cat" type="RigidBody2D" parent="." unique_id=631568820]
 position = Vector2(-1, -224)
 mass = 0.235
 center_of_mass_mode = 1
@@ -197,71 +306,71 @@ inertia = 3.0
 contact_monitor = true
 linear_damp = 0.5
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Cat"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Cat" unique_id=389334111]
 position = Vector2(-4.299999, 35.199997)
 rotation = 1.5707964
 shape = SubResource("CapsuleShape2D_3dxm6")
 
-[node name="Icon" type="Sprite2D" parent="Cat"]
+[node name="Icon" type="Sprite2D" parent="Cat" unique_id=1810904555]
 z_index = 1
 position = Vector2(-3.7999992, 41.199997)
 scale = Vector2(0.4, 0.4)
 texture = ExtResource("4_vy5pj")
 
-[node name="PanicArea" type="Area2D" parent="Cat"]
+[node name="PanicArea" type="Area2D" parent="Cat" unique_id=2110380006]
 position = Vector2(-1.2999992, 103.2)
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Cat/PanicArea"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Cat/PanicArea" unique_id=940192802]
 shape = SubResource("RectangleShape2D_r0du0")
 
-[node name="Boundaries" type="Node2D" parent="."]
+[node name="Boundaries" type="Node2D" parent="." unique_id=1519023300]
 
-[node name="LeftBoundary" type="StaticBody2D" parent="Boundaries"]
+[node name="LeftBoundary" type="StaticBody2D" parent="Boundaries" unique_id=578900728]
 position = Vector2(-256, 88)
 collision_layer = 3
 collision_mask = 3
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Boundaries/LeftBoundary"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Boundaries/LeftBoundary" unique_id=1949904052]
 shape = SubResource("WorldBoundaryShape2D_uu6xs")
 
-[node name="RightBoundary" type="StaticBody2D" parent="Boundaries"]
+[node name="RightBoundary" type="StaticBody2D" parent="Boundaries" unique_id=1366399672]
 position = Vector2(256, 96)
 collision_layer = 3
 collision_mask = 3
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Boundaries/RightBoundary"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Boundaries/RightBoundary" unique_id=1685664045]
 shape = SubResource("WorldBoundaryShape2D_r0du0")
 
-[node name="BottomBoundary" type="StaticBody2D" parent="Boundaries"]
+[node name="BottomBoundary" type="StaticBody2D" parent="Boundaries" unique_id=1176673256]
 position = Vector2(0, 256)
 collision_layer = 3
 collision_mask = 3
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Boundaries/BottomBoundary"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Boundaries/BottomBoundary" unique_id=905161164]
 shape = SubResource("WorldBoundaryShape2D_cm0pq")
 
-[node name="TopBoundary" type="StaticBody2D" parent="Boundaries"]
+[node name="TopBoundary" type="StaticBody2D" parent="Boundaries" unique_id=714058742]
 position = Vector2(0, -570)
 collision_layer = 3
 collision_mask = 3
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Boundaries/TopBoundary"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Boundaries/TopBoundary" unique_id=244947805]
 shape = SubResource("WorldBoundaryShape2D_fos0i")
 
-[node name="spawner" type="Node2D" parent="." node_paths=PackedStringArray("uiManager")]
+[node name="spawner" type="Node2D" parent="." unique_id=605614483 node_paths=PackedStringArray("uiManager")]
 position = Vector2(2, -519)
 script = ExtResource("5_bmxlf")
 uiManager = NodePath("../CanvasLayer")
 
-[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="." unique_id=880997353]
 stream = ExtResource("6_4kpch")
 volume_db = -9.904
 autoplay = true
 parameters/looping = true
 
-[node name="GameBoarder" type="Sprite2D" parent="."]
+[node name="GameBoarder" type="Sprite2D" parent="." unique_id=279169464]
 texture = ExtResource("7_50glp")
 
-[node name="BackGround" type="Sprite2D" parent="."]
+[node name="BackGround" type="Sprite2D" parent="." unique_id=1206473917]
 z_index = -2000
 texture = ExtResource("7_jw32o")

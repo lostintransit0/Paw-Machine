@@ -23,11 +23,15 @@ var refillsBought : int = 0
 @onready var drop_shop: Button = $Control2/MarginContainer/VBoxContainer/Panel/DropShop
 @onready var refill_machine: Button = $Control2/MarginContainer/VBoxContainer/Panel2/RefillMachine
 @export var spawner: Spawner
+@onready var animation_player: AnimationPlayer = $AnimationPlayer
+const ENDSCREEN = preload("uid://csxdricg44p8u")
+@onready var curtain: AudioStreamPlayer = $curtain
 
 func _ready() -> void:
 	drop_shop.connect("pressed", on_drop_shop)
 	refill_machine.connect("pressed", on_refill_machine)
-
+	animation_player.connect("animation_finished", change_scene)
+	
 func addScore(toAdd : int):
 	score += toAdd
 	totalScore += toAdd
@@ -38,7 +42,7 @@ func updateBoard(newDrops : int):
 	totalScoreTextbox.text = "Score: " + str(totalScore)
 	drop_shop.text = "Buy another drop (" + str(dropPrice) +" points)"
 	refill_machine.text = "Refill Machine (" + str(refillPrice) +" points)"
-
+	
 func on_drop_shop():
 	drop_shop.release_focus()
 	if score < dropPrice: return
@@ -57,4 +61,11 @@ func on_refill_machine():
 	score -= refillPrice
 	refillsBought += 1
 	updateBoard(player.drops)
+
+func endGame():
+	curtain.play()
+	animation_player.play("CurtainClose")
+	Globals.FinalScore = totalScore
 	
+func change_scene(_anim_name: StringName):
+	get_tree().change_scene_to_packed(ENDSCREEN)

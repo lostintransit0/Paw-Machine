@@ -94,6 +94,11 @@ func Retracting(delta):
 		grabTarget.canDelete = true
 		uiManager.addScore(Points[grabTarget.currentRarity])
 		uiManager.updateBoard(drops)
+		
+		if drops == 0 and uiManager.score < uiManager.dropPrice:
+			uiManager.endGame()
+			drops = -1
+			
 	basicPhysics()
 	
 	var target_rotation = Cat.global_position.direction_to(grabTarget.global_position).angle() - PI/2
@@ -204,7 +209,7 @@ func _on_collide(body: Node):
 	retractDelay.start()
 
 func _input(event: InputEvent) -> void:
-	if event.is_action_pressed("ClawDown") and not drops == 0 and currentState == STATE.IDLE:
+	if event.is_action_pressed("ClawDown") and not drops < 1 and currentState == STATE.IDLE:
 		currentState = STATE.GRABBING
 		drops -= 1
 		uiManager.updateBoard(drops)

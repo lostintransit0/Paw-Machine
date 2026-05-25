@@ -1,0 +1,105 @@
+[gd_scene format=3 uid="uid://csxdricg44p8u"]
+
+[ext_resource type="Script" uid="uid://dty5n2jehqqpq" path="res://Scripts/endscreen.gd" id="1_engki"]
+[ext_resource type="Texture2D" uid="uid://col1sfq5nxnqa" path="res://OtherSprites/curtain.webp" id="2_engki"]
+[ext_resource type="Texture2D" uid="uid://cdexkoi0y1mi4" path="res://OtherSprites/game-boarder.png" id="3_c2nge"]
+
+[sub_resource type="Animation" id="Animation_ho0mf"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Control/Control:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_engki"]
+resource_name = "curtainRise"
+length = 2.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Control/Control:position")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(0, 0), Vector2(0, -648)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_c2nge"]
+_data = {
+&"RESET": SubResource("Animation_ho0mf"),
+&"curtainRise": SubResource("Animation_engki")
+}
+
+[node name="Endscreen" type="Node2D" unique_id=848174234]
+
+[node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=1611320936]
+script = ExtResource("1_engki")
+
+[node name="Control" type="Control" parent="CanvasLayer" unique_id=2014739137]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="RichTextLabel" type="RichTextLabel" parent="CanvasLayer/Control" unique_id=777766857]
+custom_minimum_size = Vector2(0, 200)
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_bottom = 200.0
+grow_horizontal = 2
+theme_override_font_sizes/normal_font_size = 40
+text = "Final Score: NaN"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Control" type="Control" parent="CanvasLayer/Control" unique_id=1016172822]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="TextureRect" type="TextureRect" parent="CanvasLayer/Control/Control" unique_id=397374277]
+layout_mode = 1
+anchors_preset = 9
+anchor_bottom = 1.0
+offset_right = 432.0
+grow_vertical = 2
+texture = ExtResource("2_engki")
+expand_mode = 1
+flip_h = true
+
+[node name="TextureRect2" type="TextureRect" parent="CanvasLayer/Control/Control" unique_id=1887299725]
+layout_mode = 1
+anchors_preset = 11
+anchor_left = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -432.0
+grow_horizontal = 0
+grow_vertical = 2
+texture = ExtResource("2_engki")
+expand_mode = 1
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="CanvasLayer" unique_id=194579306]
+libraries/ = SubResource("AnimationLibrary_c2nge")
+
+[node name="Camera2D" type="Camera2D" parent="." unique_id=1531960097]
+
+[node name="GameBoarder" type="Sprite2D" parent="." unique_id=1392889192]
+texture = ExtResource("3_c2nge")

@@ -15,6 +15,10 @@ run/main_scene="uid://bvussugex6ape"
 config/features=PackedStringArray("4.6", "GL Compatibility")
 config/icon="res://OtherSprites/icon.svg"
 
+[autoload]
+
+Globals="*uid://8moc6eem8jcn"
+
 [display]
 
 window/size/viewport_width=864
